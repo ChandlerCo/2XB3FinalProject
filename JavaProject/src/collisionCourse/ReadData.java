@@ -1,4 +1,4 @@
-package Stuff;
+package collisionCourse;
 
 public class ReadData {
 

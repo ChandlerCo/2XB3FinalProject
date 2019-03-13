@@ -1,5 +1,5 @@
 package collisionCourse;
 
-public class Sorting {
+public class Calculations {
 
 }

@@ -1,5 +1,7 @@
 package collisionCourse;
 
+import collisionCourse.CustomDataTypes.*;
+
 public class Entry implements Comparable<Entry> {
     // variables
     private final int C_YEAR;
@@ -15,27 +17,52 @@ public class Entry implements Comparable<Entry> {
     private final int P_SEX;
     private final int P_AGE;
     private final int P_ISEV;
-    // cont.
     
     // constructors
-    public Entry(String strLine) {
-        this.C_YEAR = 2016;
-        this.C_MONTH = 1;
-        this.C_WDAY = 1;
-        this.C_HOUR = 2016;
-        this.C_WTHR = 1;
-        this.C_RSUR = 1;
+    public Entry(int cYear, int cMonth, int cDay, int cHour, int cWthr, int cRsur, int vType, int vYear, int pSex, int pAge, int pIsev) {
+        this.C_YEAR = cYear;
+        this.C_MONTH = cMonth;
+        this.C_WDAY = cDay;
+        this.C_HOUR = cHour;
+        this.C_WTHR = cWthr;
+        this.C_RSUR = cRsur;
         
-        this.V_TYPE = 2016;
-        this.V_YEAR = 1;
+        this.V_TYPE = vType;
+        this.V_YEAR = vYear;
         
-        this.P_SEX = 1;
-        this.P_AGE = 2016;
-        this.P_ISEV = 1;
+        this.P_SEX = pSex;
+        this.P_AGE = pAge;
+        this.P_ISEV = pIsev;
         
     }
     
     // accessors
+    public int get(Field theField) {
+    	if (theField == Field.C_Year) {
+    		return this.C_YEAR;
+    	}else if (theField == Field.C_Month) {
+    		return this.C_MONTH;
+    	}else if (theField == Field.C_Wday) {
+    		return this.C_WDAY;
+    	}else if (theField == Field.C_Hour) {
+    		return this.C_HOUR;
+    	}else if (theField == Field.C_Wthr) {
+    		return this.C_WTHR;
+    	}else if (theField == Field.C_Rsur) {
+    		return this.C_RSUR;
+    	}else if (theField == Field.V_Type) {
+    		return this.V_TYPE;
+    	}else if (theField == Field.V_Year) {
+    		return this.V_YEAR;
+    	}else if (theField == Field.P_Sex) {
+    		return this.P_SEX;
+    	}else if (theField == Field.P_Age) {
+    		return this.P_AGE;
+    	}else if (theField == Field.P_Isev) {
+    		return this.P_ISEV;
+    	}
+    	return 0;
+    }
     public int getYear() {
         return this.C_YEAR;
     }
@@ -85,12 +112,8 @@ public class Entry implements Comparable<Entry> {
     }
     
     
-    public int compareTo(Entry that, String value) {
+    public int compareTo(Entry that, Field value) {
         // TODO
-        if (value.contentEquals("C_WDAY")) {
-            return this.getDay() - that.getDay();
-        }
-        
-        return 0;
+        return this.get(value) - that.get(value);
     }
 }

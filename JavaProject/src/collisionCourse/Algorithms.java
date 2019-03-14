@@ -9,13 +9,11 @@ public class Algorithms {
 
 	// binary search - needs to be able to find the first and last occurrences of a value
 	/**
-	 * Finds the index such that the value at that index is greater than or equal to the input value
-	 * At the same time, the value at the index one below should be less than or null
-	 * Can also be used to find the first valid element for a range.
+	 * Finds the smallest index where the value is greater than or equal to the input value
 	 * 
-	 * @param data The sorted array of collision entries
-	 * @param field The type being compared
-	 * @param value The value to be found
+	 * @param data The array of Entry values sorted according to field
+	 * @param field The type of value being compared
+	 * @param value The numeric value being compared against
 	 * @return The index
 	 */
 	public static int binSearchBegin(Entry[] data, Field field, int value) {
@@ -42,6 +40,14 @@ public class Algorithms {
 		return lo;
 	}
 	
+	/**
+	 * Finds the last index where the value is less than or equal to the input value
+	 * 
+	 * @param data The array of Entry values sorted according to field
+	 * @param field The type of value being compared
+	 * @param value The numeric value being compared against
+	 * @return The index
+	 */
 	public static int binSearchEnd(Entry[] data, Field field, int value) {
 		int lo = 0;
         int hi = data.length - 1;
@@ -66,4 +72,7 @@ public class Algorithms {
 	}
 	
 	// merge sort (cause its stable)
+	public static void mergeSort() {
+		
+	}
 }

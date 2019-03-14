@@ -1,5 +1,7 @@
 package collisionCourse;
 
+import java.util.ArrayList;
+
 import collisionCourse.CustomDataTypes.*;
 
 //import CustomDataTypes.java;
@@ -16,20 +18,20 @@ public class Algorithms {
 	 * @param value The numeric value being compared against
 	 * @return The index
 	 */
-	public static int binSearchBegin(Entry[] data, Field field, int value) {
+	public static int binSearchBegin(ArrayList<Entry> data, Field field, int value) {
 		int lo = 0;
-        int hi = data.length - 1;
+        int hi = data.size() - 1;
         while (lo <= hi) {
             
             int mid = (hi + lo) / 2;
             
-            if (value > data[mid].get(field)) {
+            if (value > data.get(mid).get(field)) {
             	lo = mid + 1;
             }else{
             	if (mid == 0) {
             		return 0;
             	}
-            	if (value > data[mid - 1].get(field)) {
+            	if (value > data.get(mid - 1).get(field)) {
             		return mid;
             	}
             	hi = mid - 1;
@@ -48,20 +50,20 @@ public class Algorithms {
 	 * @param value The numeric value being compared against
 	 * @return The index
 	 */
-	public static int binSearchEnd(Entry[] data, Field field, int value) {
+	public static int binSearchEnd(ArrayList<Entry> data, Field field, int value) {
 		int lo = 0;
-        int hi = data.length - 1;
+        int hi = data.size() - 1;
         while (lo <= hi) {
             
             int mid = (hi + lo) / 2;
             
-            if (value < data[mid].get(field)) {
+            if (value < data.get(mid).get(field)) {
             	hi = mid - 1;
             }else{
-            	if (mid == data.length - 1) {
+            	if (mid == data.size() - 1) {
             		return mid;
             	}
-            	if (value < data[mid + 1].get(field)) {
+            	if (value < data.get(mid + 1).get(field)) {
             		return mid;
             	}
             	lo = mid + 1;
@@ -72,7 +74,38 @@ public class Algorithms {
 	}
 	
 	// merge sort (cause its stable)
-	public static void mergeSort() {
+	public static void mergeSort(ArrayList<Entry> data, Field field) {
+		merge(data, field, 0, data.size() - 1);
+	}
+	
+	private static void merge(ArrayList<Entry> data, Field field, int lo, int hi) {
 		
+		
+		int mid = (lo + hi)/ 2;
+		
+		merge(data, field, lo, mid);
+		merge(data, field, mid + 1, hi);
+		
+		if (!less(data.get(mid + 1), data.get(mid), field)) {
+			insertion(data, field, lo, hi);
+	    }
+	}
+	
+	private static void insertion(ArrayList<Entry> data, Field field, int lo, int hi) {
+		for (int i = lo; i < hi + 1; i++) {
+            for (int j = i; j > lo && less(data.get(j), data.get(j-1), field); j--) {
+                exchange(data, j, j - 1);
+            }
+		}
+	}
+	
+	private static boolean less(Entry a, Entry b, Field field) {
+		return a.compareTo(b, field) < 0;
+	}
+	
+	private static void exchange(ArrayList<Entry> data, int i, int j) {
+		Entry tmp = data.get(i);
+		data.set(i, data.get(j));
+		data.set(i, tmp);
 	}
 }

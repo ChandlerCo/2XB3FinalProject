@@ -74,12 +74,21 @@ public class Algorithms {
 	}
 	
 	// merge sort (cause its stable)
+	/**
+	 * In place merge sort
+	 * 
+	 * @param data The ArrayList of type Entry to be sorted 
+	 * @param field The field type to be sorted on
+	 */
 	public static void mergeSort(ArrayList<Entry> data, Field field) {
 		merge(data, field, 0, data.size() - 1);
 	}
 	
 	private static void merge(ArrayList<Entry> data, Field field, int lo, int hi) {
-		
+		if ((hi - lo) < 7) {
+			insertion(data, field, lo, hi);
+			return;
+		}
 		
 		int mid = (lo + hi)/ 2;
 		

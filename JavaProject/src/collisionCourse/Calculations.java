@@ -54,6 +54,7 @@ public class Calculations {
 			if (input.get(f) >= 0) {
 				if (first) {
 					copy = data;
+					first = false;
 				}else {
 					copy = all;
 				}

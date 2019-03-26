@@ -5,6 +5,15 @@ import java.util.ArrayList;
 import collisionCourse.CustomDataTypes.*;
 
 public class Calculations {
+	/**
+	 * Filters a data set only taking items matching a criteria
+	 * 
+	 * @param data The dataset to search through
+	 * @param field The Attribute being compared
+	 * @param value The value of the attribute
+	 * @param range The range of the value
+	 * @return A list of relevant collisions
+	 */
 	public static ArrayList<Entry> filter(ArrayList<Entry> data, Field field, int value, int range){
 		ArrayList<Entry> filtered = new ArrayList<Entry>();
 		
@@ -26,14 +35,14 @@ public class Calculations {
 		return data.size() * 1.0/size;
 	}
 	
-	public static double dangerSev(ArrayList<Entry> data, int sev) {
+	public static double dangerSev(ArrayList<Entry> data, int sev, int size) {
 		int total = 0;
 		for (int i = 0; i < data.size(); i++) {
 			if (data.get(i).get(Field.P_Isev) == sev) {
 				total++;
 			}
 		}
-		return (total * 1.0)/data.size();
+		return (total * 1.0)/size;
 	}
 	
 	public static double[] danger(Entry input, int range, ArrayList<Entry> data) {
@@ -52,7 +61,7 @@ public class Calculations {
 			}
 		}
 		calculations[0] = dangerPercent(all, data.size());
-		calculations[1] = dangerSev(all, 2);
+		calculations[1] = dangerSev(all, 2, all.size());
 		
 		return calculations;
 	}

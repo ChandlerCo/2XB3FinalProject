@@ -45,25 +45,26 @@ public class Calculations {
 		return (total * 1.0)/size;
 	}
 	
-	public static double[] danger(Entry input, int range, ArrayList<Entry> data) {
-		double[] calculations = new double[10];
-		ArrayList<Entry> all = null;
-		ArrayList<Entry> copy;
-		boolean first = true;
+	public static Values danger(Entry input, int range, ArrayList<Entry> data) {
+		Values calcs = new Values();
+		// entries matching all criteria
+		ArrayList<Entry> all = data;
 		for (Field f : Field.values()) {
 			if (input.get(f) >= 0) {
-				if (first) {
-					copy = data;
-					first = false;
-				}else {
-					copy = all;
-				}
-				all = filter(copy, f, input.get(f), range);
+				all = filter(all, f, input.get(f), range);
 			}
 		}
-		calculations[0] = dangerPercent(all, data.size());
-		calculations[1] = dangerSev(all, 2, all.size());
+		calcs.setAll(dangerPercent(all, data.size()), dangerSev(all, 2, all.size()));
 		
-		return calculations;
+		// entries of all, saving top
+		all = data;
+		ArrayList<Entry> copy = null;
+		for (Field f : Field.values()) {
+			if (input.get(f) >= 0) {
+				copy = filter(all, f, input.get(f), range);
+				calcs.setTop(dangerPercent(copy, data.size()), dangerSev(copy, 2, all.size()), f);
+			}
+		}
+		return calcs;
 	}
 }

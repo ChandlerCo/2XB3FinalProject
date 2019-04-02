@@ -3,31 +3,107 @@ package collisionCourse;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ReadData {
-	Entry[] Entries = new Entry[1];
-	BufferedReader reader;{
-	try {
-		reader = new BufferedReader(new FileReader("NCDB_2016.txt"));
-		reader.readLine();
+	
+	public static ArrayList<Entry> Read(String file) throws IOException{
+		int year;
+		int month;
+		int day;
+		int hour;
+		int wthr;
+		int rsur;
+		int vType;
+		int vYear;
+		int pSex;
+		int pAge;
+		int iSev;
+		BufferedReader reader;
+		reader = new BufferedReader(new FileReader(file));
+		ArrayList<Entry> Data = new ArrayList<Entry>();
 		String line = reader.readLine();
-		String [] array = line.split(",");
-		int year = Integer.parseInt(array[0]);
-        int month = Integer.parseInt(array[1]);
-        int day = Integer.parseInt(array[2]);
-        int hour = Integer.parseInt(array[3]);
-        int wthr = Integer.parseInt(array[7]);
-        int rsur = Integer.parseInt(array[8]);
-        int vType = Integer.parseInt(array[12]);
-        int vYear = Integer.parseInt(array[13]);
-        int pSex = Integer.parseInt(array[15]);
-        int pAge = Integer.parseInt(array[16]);
-        int isev = Integer.parseInt(array[18]);
-		Entries[0] = new Entry(year, month, day, hour, wthr, rsur, vType, vYear, pSex, pAge, isev);
-	}catch (IOException e) {
-		e.printStackTrace();
+		while(true) {
+			line = reader.readLine();
+			if(line == null) {
+				break;
+			}
+			String[] array = line.split(",");
+			year = Integer.parseInt(array[0]);
+			if(array[1].contentEquals("UU") || array[1].contentEquals("XX")) {
+				month = -1;
+			}
+			else {
+				month = Integer.parseInt(array[1]);
+			}
+	        if(array[2].contentEquals("U") || array[2].contentEquals("X")) {
+	        	 day = -1;
+	        }
+	        else {
+	        	day = Integer.parseInt(array[2]);
+	        }
+	        if(array[3].contentEquals("UU") || array[3].contentEquals("XX")) {
+	        	hour = -1;
+	        }
+	        else {
+	        	hour = Integer.parseInt(array[3]);
+	        }
+	        if(array[8].equals("Q") || array[8].equals("U") || array[8].equals("X")) {
+	        	wthr = -1;
+	        }
+	        else {
+	        	wthr = Integer.parseInt(array[8]);
+	        }
+	        if(array[9].contentEquals("Q") || array[9].contentEquals("U") || array[9].contentEquals("X")) {
+	        	rsur = -1;
+	        }
+	        else {
+		        rsur = Integer.parseInt(array[9]);
+	        }
+	        if(array[13].contentEquals("NN") || array[13].contentEquals("QQ") 
+	        		|| array[13].contentEquals("UU") || array[13].contentEquals("XX")) {
+	        	vType = -1;
+	        }
+	        else {
+	        	vType = Integer.parseInt(array[13]);
+	        }
+	        if(array[14].contentEquals("NNNN") || array[14].contentEquals("UUUU") 
+	        		|| array[14].contentEquals("XXXX")) {
+	        	vYear = -1;
+	        }
+	        else {
+	        	vYear = Integer.parseInt(array[14]);
+	        }
+	        if(array[16].contentEquals("F")) {
+	        	pSex = 1;
+	        }
+	        else if(array[16].contentEquals("M")) {
+	        	pSex = 2;
+	        }
+	        else {
+	        	pSex = -1;
+	        }
+	        if(array[17].contentEquals("NN") || array[17].contentEquals("UU") 
+	        		|| array[17].contentEquals("XX")) {
+	        	pAge = -1;
+	        }
+	        else {
+	        	pAge = Integer.parseInt(array[17]);
+	        }
+	        if(array[19].contentEquals("N") || array[19].contentEquals("U") 
+	        		|| array[19].contentEquals("X")) {
+	        	iSev = -1;
+	        }
+	        else {
+	        	iSev = Integer.parseInt(array[19]);
+	        }
+	        Data.add(new Entry(year, month, day, hour, wthr, rsur, vType, vYear, pSex, pAge, iSev));
+		}
+		return Data;
+	}
+	
+	public static void main(String args[]) throws IOException{
+		ArrayList<Entry> Data = Read("NCDB_2016.txt");
+		System.out.println(Data.get(0).getHour());
 	}
 }
-}
-
-

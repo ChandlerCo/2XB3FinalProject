@@ -12,9 +12,9 @@ public class Values {
 	public Values() {
 		allPer = 0.0;
 		allSev = 0.0;
-		topPer = new double[1];
-		topSev = new double[1];
-		types = new Field[1];
+		topPer = new double[3];
+		topSev = new double[3];
+		types = new Field[3];
 		for (int i = 0; i < topPer.length; i++) {
 			topPer[i] = 0.0;
 			topSev[i] = 0.0;

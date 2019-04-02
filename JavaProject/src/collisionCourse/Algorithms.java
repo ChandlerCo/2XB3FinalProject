@@ -84,6 +84,7 @@ public class Algorithms {
 		System.out.println(">>>" + data.get(0).getPAge());
 		merge(data, field, 0, data.size() - 1);
 		System.out.println(">>" + data.get(0).getPAge());
+		System.out.println(">>" + data.get(1).getPAge() + "<<");
 	}
 	
 	private static void merge(ArrayList<Entry> data, Field field, int lo, int hi) {
@@ -97,7 +98,7 @@ public class Algorithms {
 		merge(data, field, lo, mid);
 		merge(data, field, mid + 1, hi);
 		
-		if (!less(data.get(mid + 1), data.get(mid), field)) {
+		if (less(data.get(mid + 1), data.get(mid), field)) {
 			insertion(data, field, lo, hi);
 	    }
 	}
@@ -117,6 +118,37 @@ public class Algorithms {
 	private static void exchange(ArrayList<Entry> data, int i, int j) {
 		Entry tmp = data.get(i);
 		data.set(i, data.get(j));
-		data.set(i, tmp);
+		data.set(j, tmp);
+	}
+	/**
+	 * Heap sort using Comparable interface
+	 * 
+	 * @param x - the input array containing jobs that need to be sorted.
+	 * @param n - the size of the input array
+	 */
+	public static void sortHeap(ArrayList<Entry> data, Field field) {
+		int n = data.size();
+		for (int k = n / 2; k >= 0; k--)
+			sink(data, k, n, field);
+		while (n > 0) {
+			exchange(data, 0, n - 1);
+			n--;
+			sink(data, 0, n, field);
+		}
+	}
+
+
+	private static void sink(ArrayList<Entry> data, int k, int N, Field field) {
+		while (2 * k < N) {
+			int j = 2 * k;
+			data.get(j);
+			if (j < (N - 1) && less(data.get(j), data.get(j + 1), field)) {
+				j++;
+			}
+			if (!less(data.get(k), data.get(j), field))
+				break;
+			exchange(data, k, j);
+			k = j;
+		}
 	}
 }

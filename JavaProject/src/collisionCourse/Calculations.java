@@ -18,12 +18,16 @@ public class Calculations {
 		ArrayList<Entry> filtered = new ArrayList<Entry>();
 		
 		// use merge sort on data 
-		Algorithms.mergeSort(data, field);
-		System.out.println(">" + data.get(0).getPAge());
+		Algorithms.sortHeap(data, field);
+		//System.out.println(">" + data.get(0).getPAge());
 		// use binary search to find range of values
 		int start = Algorithms.binSearchBegin(data, field, value - range);
 		int end = Algorithms.binSearchEnd(data, field, value + range);
-		System.out.println(start + " - " + end);
+		/*System.out.println(start + " - " + end);
+		for (int i = 0; i < 30; i++) {
+			System.out.println(data.get(i).getPAge());
+		}
+		*/
 		for (int i = start; i <= end; i++) {
 			filtered.add(data.get(i));
 		}
@@ -65,14 +69,11 @@ public class Calculations {
 		ArrayList<Entry> copy = null;
 		for (Field f : Field.values()) {
 			if (input.get(f) >= 0) {
-				System.out.println(input.get(f) + " " + all.size());
+				//System.out.println(input.get(f) + " " + all.size());
 				if (f == Field.C_Hour || f == Field.V_Year || f == Field.P_Age) {
 					copy = filter(all, f, input.get(f), range);
 				}else {
 					copy = filter(all, f, input.get(f), 0);
-				}
-				if (f == Field.P_Age) {
-					System.out.println("AGE: " + copy.size() + " " + dangerPercent(copy, data.size()));
 				}
 				calcs.setTop(dangerPercent(copy, data.size()), dangerSev(copy, 2, copy.size()), f);
 			}

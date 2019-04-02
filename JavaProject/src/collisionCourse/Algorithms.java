@@ -81,7 +81,9 @@ public class Algorithms {
 	 * @param field The field type to be sorted on
 	 */
 	public static void mergeSort(ArrayList<Entry> data, Field field) {
+		System.out.println(">>>" + data.get(0).getPAge());
 		merge(data, field, 0, data.size() - 1);
+		System.out.println(">>" + data.get(0).getPAge());
 	}
 	
 	private static void merge(ArrayList<Entry> data, Field field, int lo, int hi) {

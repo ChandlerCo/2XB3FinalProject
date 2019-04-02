@@ -12,7 +12,10 @@ public class Values {
 	public Values() {
 		allPer = 0.0;
 		allSev = 0.0;
-		for (int i = 0; i < 3; i++) {
+		topPer = new double[1];
+		topSev = new double[1];
+		types = new Field[1];
+		for (int i = 0; i < topPer.length; i++) {
 			topPer[i] = 0.0;
 			topSev[i] = 0.0;
 			types[i] = Field.P_Isev;
@@ -41,13 +44,13 @@ public class Values {
 	}
 	
 	public void setTop(double per, double sev, Field type) {
-		if (per > topPer[0]) {
+		if (sev > topSev[0]) {
 			topPer[0] = per;
 			topSev[0] = sev;
 			types[0] = type;
 		}
-		for (int i = 1; i < 3; i++) {
-			if (topPer[i - 1] > topPer[i]) {
+		for (int i = 1; i < topSev.length; i++) {
+			if (topSev[i - 1] > topSev[i]) {
 				double p = topPer[i];
 				double s = topSev[i];
 				Field f = types[i];

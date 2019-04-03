@@ -42,7 +42,7 @@ public class Calculations {
 	public static double dangerSev(ArrayList<Entry> data, int sev, int size) {
 		int total = 0;
 		for (int i = 0; i < data.size(); i++) {
-			if (data.get(i).get(Field.P_Isev) == sev) {
+			if (data.get(i).get(Field.P_Isev) >= sev) {
 				total++;
 			}
 		}

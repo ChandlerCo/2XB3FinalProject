@@ -100,7 +100,11 @@ public class Entry implements Comparable<Entry> {
     }
     // methods
     public String toString() {
-        return "";
+        return "Year: " + this.getYear() + "\nMonth: " + this.getMonth() + "\nDay : " + this.getDay() + 
+        		"\nWeather Condition: " + this.getWthr() + "\nRoad Surface" + this.getRsur() + 
+        		"\nVehicle Type: " + this.getVType() + "\nVehicle Year: " + this.getVYear() +
+        		"\nGender: " + this.getPAge() + "\nAge: " + this.getPAge() + "\nSeverity: " +
+        		this.getPSev() + "\n";
     }
     
     // Don't use this method. It doesn't select which entry to compare on

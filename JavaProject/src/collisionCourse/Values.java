@@ -5,20 +5,30 @@ import collisionCourse.CustomDataTypes.Field;
 public class Values {
 	private double allPer;
 	private double allSev;
-	private double[] topPer;
-	private double[] topSev;
-	private Field[] types;
+	private double[] tsPer;
+	private double[] tsSev;
+	private Field[] tsType;
+	private double[] tpPer;
+	private double[] tpSev;
+	private Field[] tpType;
 	
 	public Values() {
 		allPer = 0.0;
 		allSev = 0.0;
-		topPer = new double[3];
-		topSev = new double[3];
-		types = new Field[3];
-		for (int i = 0; i < topPer.length; i++) {
-			topPer[i] = 0.0;
-			topSev[i] = 0.0;
-			types[i] = Field.P_Isev;
+		int n = 3;
+		tsPer = new double[n];
+		tsSev = new double[n];
+		tsType = new Field[n];
+		tpPer = new double[n];
+		tpSev = new double[n];
+		tpType = new Field[n];
+		for (int i = 0; i < n; i++) {
+			tsPer[i] = 0.0;
+			tsSev[i] = 0.0;
+			tsType[i] = Field.P_Isev;
+			tpPer[i] = 0.0;
+			tpSev[i] = 0.0;
+			tpType[i] = Field.P_Isev;
 		}
 	}
 	
@@ -28,14 +38,23 @@ public class Values {
 	public double allSev() {
 		return allSev;
 	}
-	public double topPer(int i) {
-		return topPer[i];
+	public double tsPer(int i) {
+		return tsPer[i];
 	}
-	public double topSev(int i) {
-		return topSev[i];
+	public double tsSev(int i) {
+		return tsSev[i];
 	}
-	public Field topType(int i) {
-		return types[i];
+	public Field tsType(int i) {
+		return tsType[i];
+	}
+	public double tpPer(int i) {
+		return tpPer[i];
+	}
+	public double tpSev(int i) {
+		return tpSev[i];
+	}
+	public Field tpType(int i) {
+		return tpType[i];
 	}
 	
 	public void setAll(double per, double sev) {
@@ -44,24 +63,46 @@ public class Values {
 	}
 	
 	public void setTop(double per, double sev, Field type) {
-		if (sev > topSev[0]) {
-			topPer[0] = per;
-			topSev[0] = sev;
-			types[0] = type;
+		// top severe
+		if (sev > tsSev[0]) {
+			tsPer[0] = per;
+			tsSev[0] = sev;
+			tsType[0] = type;
+			for (int i = 1; i < tsSev.length; i++) {
+				if (tsSev[i - 1] > tsSev[i]) {
+					double p = tsPer[i];
+					double s = tsSev[i];
+					Field f = tsType[i];
+					
+					tsPer[i] = tsPer[i - 1];
+					tsSev[i] = tsSev[i - 1];
+					tsType[i] = tsType[i - 1];
+					
+					tsPer[i - 1] = p;
+					tsSev[i - 1] = s;
+					tsType[i - 1] = f;
+				}
+			}
 		}
-		for (int i = 1; i < topSev.length; i++) {
-			if (topSev[i - 1] > topSev[i]) {
-				double p = topPer[i];
-				double s = topSev[i];
-				Field f = types[i];
-				
-				topPer[i] = topPer[i - 1];
-				topSev[i] = topSev[i - 1];
-				types[i] = types[i - 1];
-				
-				topPer[i - 1] = p;
-				topSev[i - 1] = s;
-				types[i - 1] = f;
+		// top percent
+		if (per > tpPer[0]) {
+			tpPer[0] = per;
+			tpSev[0] = sev;
+			tpType[0] = type;
+			for (int i = 1; i < tsSev.length; i++) {
+				if (tpPer[i - 1] > tpPer[i]) {
+					double p = tpPer[i];
+					double s = tpSev[i];
+					Field f = tpType[i];
+					
+					tpPer[i] = tpPer[i - 1];
+					tpSev[i] = tpSev[i - 1];
+					tpType[i] = tpType[i - 1];
+					
+					tpPer[i - 1] = p;
+					tpSev[i - 1] = s;
+					tpType[i - 1] = f;
+				}
 			}
 		}
 	}

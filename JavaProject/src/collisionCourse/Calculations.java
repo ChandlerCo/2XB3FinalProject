@@ -62,7 +62,7 @@ public class Calculations {
 				}
 			}
 		}
-		calcs.setAll(dangerPercent(all, data.size()), dangerSev(all, 2, all.size()));
+		calcs.setAll(dangerPercent(all, data.size()), dangerSev(all, 1, all.size()));
 		
 		// entries of all, saving top
 		all = data;

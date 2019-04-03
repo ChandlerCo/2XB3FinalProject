@@ -100,10 +100,10 @@ public class Entry implements Comparable<Entry> {
     }
     // methods
     public String toString() {
-        return "Year: " + this.getYear() + "\nMonth: " + this.getMonth() + "\nDay : " + this.getDay() + 
+        return "Year: " + this.getYear() + "\nMonth: " + this.getMonth() + "\nDay: " + this.getDay() + 
         		"\nWeather Condition: " + this.getWthr() + "\nRoad Surface" + this.getRsur() + 
         		"\nVehicle Type: " + this.getVType() + "\nVehicle Year: " + this.getVYear() +
-        		"\nGender: " + this.getPAge() + "\nAge: " + this.getPAge() + "\nSeverity: " +
+        		"\nGender: " + this.getPSex() + "\nAge: " + this.getPAge() + "\nSeverity: " +
         		this.getPSev() + "\n";
     }
     

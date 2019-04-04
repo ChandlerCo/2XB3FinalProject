@@ -121,7 +121,7 @@ public class ReadData {
 	}
 	
 	public static void main(String args[]) throws IOException{
-		ArrayList<Entry> Data = Read("NCDB_2016.txt");
-		System.out.println(Data.get(310640).getPSev());
+		ArrayList<Entry> Data = Read("data/NCDB_2016.csv");
+		System.out.println(Data.get(0).toString());
 	}
 }

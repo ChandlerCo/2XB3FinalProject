@@ -53,6 +53,13 @@ public class UserInterface implements ActionListener{
 	private Values output;
 	private static ArrayList<Entry> data;
 	// Constructor
+	/**
+	 * Creates a user interface
+	 * 
+	 * @param strHeader The window header
+	 * @param intL The default height of the window
+	 * @param intW The default width of the window
+	 */
 	public UserInterface(String strHeader, int intL, int intW) {
 		theFrame = new JFrame(strHeader);
 		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,11 +147,19 @@ public class UserInterface implements ActionListener{
 	    theFrame.setVisible(true);
 	}
 	
+	/**
+	 * The main function - creates the UI window
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		data = ReadData.Read("data\\NCDB_2016.csv");
 		UserInterface ui = new UserInterface("Collision Course", 550, 910);
 	}
 
+	/**
+	 * To react when Jave UI elements are triggered.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub

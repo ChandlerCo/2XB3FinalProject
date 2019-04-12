@@ -12,6 +12,9 @@ public class Values {
 	private double[] tpSev;
 	private Field[] tpType;
 	
+	/**
+	 * Creates a default set of values
+	 */
 	public Values() {
 		allPer = 0.0;
 		allSev = 0.0;
@@ -32,36 +35,102 @@ public class Values {
 		}
 	}
 	
+	/**
+	 * Gets the percentage for collisions matching all criteria
+	 * 
+	 * @return allPer, the percentage for all
+	 */
 	public double allPer() {
 		return allPer;
 	}
+	
+	/**
+	 * Gets the severity percentage for collisions matching all criteria
+	 * 
+	 * @return allSev, the severity percentage for all
+	 */
 	public double allSev() {
 		return allSev;
 	}
+	
+	/**
+	 * Gets the percentage for most severe factor
+	 * 
+	 * @param i The ranking of how severe (0 - 2)
+	 * @return The pecentage
+	 */
 	public double tsPer(int i) {
 		return tsPer[i];
 	}
+	
+	/**
+	 * Gets the severity percentage for most severe factor
+	 * 
+	 * @param i The ranking of how severe (0 - 2)
+	 * @return The pecentage
+	 */
 	public double tsSev(int i) {
 		return tsSev[i];
 	}
+	
+	/**
+	 * Gets the field type for most severe factor
+	 * 
+	 * @param i The ranking of how severe (0 - 2)
+	 * @return The field
+	 */
 	public Field tsType(int i) {
 		return tsType[i];
 	}
+	
+	/**
+	 * Gets the percentage for most common factor
+	 * 
+	 * @param i The ranking of how common (0 - 2)
+	 * @return The pecentage
+	 */
 	public double tpPer(int i) {
 		return tpPer[i];
 	}
+	
+	/**
+	 * Gets the severity percentage for most common factor
+	 * 
+	 * @param i The ranking of how common (0 - 2)
+	 * @return The pecentage
+	 */
 	public double tpSev(int i) {
 		return tpSev[i];
 	}
+	
+	/**
+	 * Gets the field type for most common factor
+	 * 
+	 * @param i The ranking of how common (0 - 2)
+	 * @return The field
+	 */
 	public Field tpType(int i) {
 		return tpType[i];
 	}
 	
+	/**
+	 * Sets percentage and severity for entries matching all criteria
+	 * 
+	 * @param per The total percentage
+	 * @param sev The severity percentage
+	 */
 	public void setAll(double per, double sev) {
 		allPer = per;
 		allSev = sev;
 	}
 	
+	/**
+	 * Checks if given values should be in either top common or severe and saves value
+	 * 
+	 * @param per Total percentage
+	 * @param sev Severity percentage
+	 * @param type The field type
+	 */
 	public void setTop(double per, double sev, Field type) {
 		// top severe
 		if (sev > tsSev[0]) {

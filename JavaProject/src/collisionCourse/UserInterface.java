@@ -142,7 +142,7 @@ public class UserInterface implements ActionListener{
 	
 	public static void main(String[] args) throws IOException {
 		data = ReadData.Read("data\\NCDB_2016.csv");
-		UserInterface ui = new UserInterface("Collision Course", 600, 910);
+		UserInterface ui = new UserInterface("Collision Course", 550, 910);
 	}
 
 	@Override

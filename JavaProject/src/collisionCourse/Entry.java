@@ -2,6 +2,13 @@ package collisionCourse;
 
 import collisionCourse.CustomDataTypes.*;
 
+/**
+ * Class for Entry ADT
+ * Contains data describing a collision
+ * 
+ * @author Chandler Co
+ *
+ */
 public class Entry implements Comparable<Entry> {
     // variables
     private final int C_YEAR;

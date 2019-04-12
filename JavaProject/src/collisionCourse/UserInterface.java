@@ -8,6 +8,13 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * Class for the project's user interface
+ * Implements ActionListener
+ * 
+ * @author Chandler Co
+ *
+ */
 public class UserInterface implements ActionListener{
 	// properties
 

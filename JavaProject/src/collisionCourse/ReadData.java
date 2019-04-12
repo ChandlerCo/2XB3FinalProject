@@ -117,11 +117,12 @@ public class ReadData {
 	        
 	        Data.add(new Entry(year, month, day, hour, wthr, rsur, vType, vYear, pSex, pAge, iSev));
 		}
+		reader.close();
 		return Data;
 	}
-	
+	/*
 	public static void main(String args[]) throws IOException{
 		ArrayList<Entry> Data = Read("data/NCDB_2016.csv");
 		System.out.println(Data.get(0).toString());
-	}
+	}*/
 }

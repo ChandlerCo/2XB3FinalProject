@@ -41,13 +41,11 @@ public class UserInterface implements ActionListener{
 
 	public JButton go;
 	
-	public JLabel totPer;
-	public JLabel totSev;
+	public JLabel total;
+	//public JLabel totSev;
 	
-	public JLabel tpPer[];
-	//public JLabel tpSev[];
-	public JLabel tsPer[];
-	//public JLabel tsSev[];
+	public JLabel topPer[];
+	public JLabel topSev[];
 	
 	public Values output;
 	private static ArrayList<Entry> data;
@@ -118,36 +116,36 @@ public class UserInterface implements ActionListener{
 		thePanel.add(go);
 		
 		// total
-		totPer = new JLabel("Total Percent");
-		totPer.setSize(100,25);
-		totPer.setLocation(25, 200);
-		thePanel.add(totPer);
-		
+		total = new JLabel("Total Percent");
+		total.setSize(300,25);
+		total.setLocation(25, 200);
+		thePanel.add(total);
+		/*
 		totSev = new JLabel("Total severe");
 		totSev.setSize(100,25);
 		totSev.setLocation(150, 200);
 		thePanel.add(totSev);
-		
-		tpPer = new JLabel[3];
+		*/
+		topPer = new JLabel[3];
 		//tpSev = new JLabel[3];
 		
-		tsPer = new JLabel[3];
+		topSev = new JLabel[3];
 		//tsSev = new JLabel[3];
 		for (int i = 0; i < 3; i++) {
-			tpPer[i] = new JLabel("Top Percent");
-			tpPer[i].setSize(300,25);
-			tpPer[i].setLocation(25, 240 + i * 40);
-			thePanel.add(tpPer[i]);
+			topPer[i] = new JLabel("Top Percent");
+			topPer[i].setSize(300,25);
+			topPer[i].setLocation(25, 240 + i * 40);
+			thePanel.add(topPer[i]);
 			/*
 			tpSev[i] = new JLabel("Top Severe");
 			tpSev[i].setSize(100,25);
 			tpSev[i].setLocation(150, 240 + i * 40);
 			thePanel.add(tpSev[i]);
 			*/
-			tsPer[i] = new JLabel("Top Percent");
-			tsPer[i].setSize(300,25);
-			tsPer[i].setLocation(25, 400 + i * 40);
-			thePanel.add(tsPer[i]);
+			topSev[i] = new JLabel("Top Percent");
+			topSev[i].setSize(300,25);
+			topSev[i].setLocation(25, 400 + i * 40);
+			thePanel.add(topSev[i]);
 			/*
 			tsSev[i] = new JLabel("Top Severe");
 			tsSev[i].setSize(100,25);
@@ -191,13 +189,12 @@ public class UserInterface implements ActionListener{
 			System.out.println(month + " " + day + " " + hour + " " + weather + " " + rdsur + " " + type + " " + year + " " + sex + " " + age);
 			output = Calculations.danger(new Entry(-1, month, day, hour, weather, rdsur, type, year, sex, age, -1), 3, data);
 			
-			totPer.setText("" + output.allPer());
-			totSev.setText("" + output.allSev());
+			total.setText("All: \t" + String.format("%.2f", output.allPer()*100) + "% \t" + String.format("%.2f",output.allSev()*100) + "%");
 			
 			for (int i = 0; i < 3; i++) {
-				tpPer[i].setText(output.tpType(2 - i) + ": " + output.tpPer(2 - i)*100 + " " + output.tpSev(2 - i)*100);
+				topPer[i].setText(output.tpType(2 - i) + ": \t" + String.format("%.2f", output.tpPer(2 - i)*100) + "% \t" + String.format("%.2f", output.tpSev(2 - i)*100) + "%");
 				//tpSev[i].setText("" + output.tpSev(2 - i));
-				tsPer[i].setText(output.tsType(2 - i) + ": " + output.tsPer(2 - i)*100 + " " + output.tsSev(2 - i)*100);
+				topSev[i].setText(output.tsType(2 - i) + ": \t" + String.format("%.2f", output.tsPer(2 - i)*100) + "% \t" + String.format("%.2f", output.tsSev(2 - i)*100) + "%");
 				//tsSev[i].setText("" + output.tsSev(2 - i));
 			}
 		}

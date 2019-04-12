@@ -3,6 +3,12 @@ package collisionCourse;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+/**
+ * Extends JComboBox, with a constructor with more inputs
+ * 
+ * @author Chandler Co
+ *
+ */
 public class ComboBox extends JComboBox{
 	/**
 	 * Creates  JComboBox, and also sets other commonly set parameters

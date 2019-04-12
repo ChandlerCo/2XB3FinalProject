@@ -7,6 +7,14 @@ import collisionCourse.CustomDataTypes.*;
 //import CustomDataTypes.java;
 // searching (binary search)
 // sorting (merge sort)
+/**
+ * Sorting and searching algorithms used for application
+ * Contains two binary searches for first and last occurence
+ * Contains merge sort and heap sort
+ * 
+ * @author Chandler Co
+ *
+ */
 public class Algorithms {
 
 	// binary search - needs to be able to find the first and last occurrences of a value
@@ -121,10 +129,10 @@ public class Algorithms {
 		data.set(j, tmp);
 	}
 	/**
-	 * Heap sort using Comparable interface
+	 * Heap sort
 	 * 
-	 * @param x - the input array containing jobs that need to be sorted.
-	 * @param n - the size of the input array
+	 * @param data - the input array of collision entries to be sorted.
+	 * @param field - the field type to sort on
 	 */
 	public static void sortHeap(ArrayList<Entry> data, Field field) {
 		int n = data.size();

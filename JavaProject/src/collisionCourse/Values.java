@@ -2,6 +2,12 @@ package collisionCourse;
 
 import collisionCourse.CustomDataTypes.Field;
 
+/**
+ * Class for all return values to be shown
+ * 
+ * @author Chandler Co
+ *
+ */
 public class Values {
 	private double allPer;
 	private double allSev;

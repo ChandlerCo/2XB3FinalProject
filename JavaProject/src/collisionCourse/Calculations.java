@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import collisionCourse.CustomDataTypes.*;
 
+/**
+ * Uses algorithms to manipulate data to get meaningful results
+ * Finds the total percentage and severity percentage
+ * 
+ * @author Chandler Co
+ *
+ */
 public class Calculations {
 	/**
 	 * Filters a data set only taking items matching a criteria

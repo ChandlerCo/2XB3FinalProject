@@ -5,6 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Module for reading collision csv file
+ * 
+ * @author Zabrain Ali
+ *
+ */
 public class ReadData {
 	/**
 	 * In the ReadData class there is only one function called Read that reads from the data file,

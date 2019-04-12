@@ -3,6 +3,12 @@ package collisionCourse;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Extends JLabel with a constructor with more input parameters
+ * 
+ * @author Chandler Co
+ *
+ */
 public class Label extends JLabel{
 	/**
 	 * Creates a JLabel and set commonly used paramters

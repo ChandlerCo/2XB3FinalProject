@@ -44,7 +44,7 @@ public class Values {
 	/**
 	 * Gets the percentage for collisions matching all criteria
 	 * 
-	 * @return allPer, the percentage for all
+	 * @return The percentage for all
 	 */
 	public double allPer() {
 		return allPer;
@@ -53,7 +53,7 @@ public class Values {
 	/**
 	 * Gets the severity percentage for collisions matching all criteria
 	 * 
-	 * @return allSev, the severity percentage for all
+	 * @return The severity percentage for all
 	 */
 	public double allSev() {
 		return allSev;

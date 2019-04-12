@@ -131,8 +131,8 @@ public class Algorithms {
 	/**
 	 * Heap sort
 	 * 
-	 * @param data - the input array of collision entries to be sorted.
-	 * @param field - the field type to sort on
+	 * @param data The input array of collision entries to be sorted.
+	 * @param field The field type to sort on
 	 */
 	public static void sortHeap(ArrayList<Entry> data, Field field) {
 		int n = data.size();

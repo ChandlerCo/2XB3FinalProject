@@ -14,7 +14,10 @@ import org.junit.jupiter.api.Test;
 import collisionCourse.CustomDataTypes.Field;
 
 /**
- * @author 
+ * Unit test cases for algorithms and calculation functions
+ * Uses JUnit 5
+ * 
+ * @author Zabrain Ali
  *
  */
 class test {

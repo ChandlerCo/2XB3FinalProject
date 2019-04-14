@@ -4,3 +4,4 @@ Student #	Name				Roles
 400089948	Zabrain Ali			Project Manager, Programmer, Designer
 400075396	Brennan David		Designer
 001153832	Mostapha Mohammed	Designer
+The work being submitted is by our group and no one else.

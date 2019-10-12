@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 /**
- * Class for the project's user interface
+ * Class for the project's user interface. Also includes the main funtion
  * Implements ActionListener
  * 
  * @author Chandler Co
@@ -138,7 +138,7 @@ public class UserInterface implements ActionListener{
 		total = new Label("", 300, 25, 25, 250, thePanel);
 
 		headPer = new Label("Top 3 factors with highest occurence percentage", 300, 25, 25, 275, thePanel);
-		headPer = new Label("Top 3 factors with highest severity percentage", 300, 25, 25, 390, thePanel);
+		headPer = new Label("Top 3 factors with highest percentage of collisions resulting in serious injury or death", 300, 25, 25, 390, thePanel);
 		topPer = new Label[3];
 		
 		topSev = new Label[3];
